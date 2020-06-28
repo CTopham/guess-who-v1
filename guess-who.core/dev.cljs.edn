@@ -1,4 +1,7 @@
 ^{:watch-dirs ["test" "src"]
   :css-dirs ["resources/public/css"]
   :auto-testing true}
+;{:main guess-who.core}
+
+^{:ring-handler guess-who.server/handler}
 {:main guess-who.core}
