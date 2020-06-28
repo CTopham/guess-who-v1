@@ -82,7 +82,7 @@
                :height .89
                :fill (if (zero? (get-in @app-state [:board j i]))
                        "rgba(100,200,10,0.0"
-                       "black")
+                       "white")
                :x i
                :y j
                :on-click
