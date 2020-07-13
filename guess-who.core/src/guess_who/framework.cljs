@@ -2,11 +2,11 @@
   (:require
     [clojure.string :as string :refer [split join]]
     ))
+
 ;The frameworks job is to take the user input which has already been translated into readable
 ;language figure out what the user is really asking in the decode method, decode will return an attribute,
 ;we use that attribute and pass it into the interpreter to see if its true or not. The interpreter will send
 ;back a unique ID. We then plug that unique ID into the dynamic answer and send that out to the UI
-
 
 ;this returns the attribute from the key code map
 (defn decoder [s]
@@ -30,7 +30,6 @@
         beard (string/includes? s "beard")
         magnum-opus (or (string/includes? s "compose") (string/includes? s "write"))
         hint (string/includes? s "hint")
-
         ]
     (cond
       (= brahms true) {:attribute "brahms" :full-input s}
@@ -282,7 +281,6 @@
       (contains? m :magnum-opus) (if (#(= (get m :magnum-opus) %) (get targ :magnum-opus))
                                    (#(str "Yes! " %1 " is one of this composers most prolific pieces") (get targ :magnum-opus))
                                    (#(str "No, try " %1 " for another composer" ) (get m :magnum-opus)))
-
 
       (contains? m :hint) (#(str %1) (get targ :hint))
 

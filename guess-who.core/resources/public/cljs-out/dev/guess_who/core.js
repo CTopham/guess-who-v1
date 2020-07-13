@@ -53,41 +53,41 @@ return null;
 })], null)], null);
 });
 guess_who.core.grid_html = (function guess_who$core$grid_html(){
-return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"svg","svg",856789142),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"view-box","view-box",-1792199155),"0 0 4 2",new cljs.core.Keyword(null,"width","width",-384071477),(1000),new cljs.core.Keyword(null,"height","height",1025178622),(600)], null),(function (){var iter__4523__auto__ = (function guess_who$core$grid_html_$_iter__19862(s__19863){
+return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"svg","svg",856789142),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"view-box","view-box",-1792199155),"0 0 4 2",new cljs.core.Keyword(null,"width","width",-384071477),(1000),new cljs.core.Keyword(null,"height","height",1025178622),(600)], null),(function (){var iter__4523__auto__ = (function guess_who$core$grid_html_$_iter__16154(s__16155){
 return (new cljs.core.LazySeq(null,(function (){
-var s__19863__$1 = s__19863;
+var s__16155__$1 = s__16155;
 while(true){
-var temp__5457__auto__ = cljs.core.seq.call(null,s__19863__$1);
+var temp__5457__auto__ = cljs.core.seq.call(null,s__16155__$1);
 if(temp__5457__auto__){
 var xs__6012__auto__ = temp__5457__auto__;
 var i = cljs.core.first.call(null,xs__6012__auto__);
-var iterys__4519__auto__ = ((function (s__19863__$1,i,xs__6012__auto__,temp__5457__auto__){
-return (function guess_who$core$grid_html_$_iter__19862_$_iter__19864(s__19865){
-return (new cljs.core.LazySeq(null,((function (s__19863__$1,i,xs__6012__auto__,temp__5457__auto__){
+var iterys__4519__auto__ = ((function (s__16155__$1,i,xs__6012__auto__,temp__5457__auto__){
+return (function guess_who$core$grid_html_$_iter__16154_$_iter__16156(s__16157){
+return (new cljs.core.LazySeq(null,((function (s__16155__$1,i,xs__6012__auto__,temp__5457__auto__){
 return (function (){
-var s__19865__$1 = s__19865;
+var s__16157__$1 = s__16157;
 while(true){
-var temp__5457__auto____$1 = cljs.core.seq.call(null,s__19865__$1);
+var temp__5457__auto____$1 = cljs.core.seq.call(null,s__16157__$1);
 if(temp__5457__auto____$1){
-var s__19865__$2 = temp__5457__auto____$1;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__19865__$2)){
-var c__4521__auto__ = cljs.core.chunk_first.call(null,s__19865__$2);
+var s__16157__$2 = temp__5457__auto____$1;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__16157__$2)){
+var c__4521__auto__ = cljs.core.chunk_first.call(null,s__16157__$2);
 var size__4522__auto__ = cljs.core.count.call(null,c__4521__auto__);
-var b__19867 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
-if((function (){var i__19866 = (0);
+var b__16159 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
+if((function (){var i__16158 = (0);
 while(true){
-if((i__19866 < size__4522__auto__)){
-var j = cljs.core._nth.call(null,c__4521__auto__,i__19866);
-cljs.core.chunk_append.call(null,b__19867,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"rect","rect",-108902628),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"width","width",-384071477),.66,new cljs.core.Keyword(null,"height","height",1025178622),.89,new cljs.core.Keyword(null,"fill","fill",883462889),(((cljs.core.get_in.call(null,cljs.core.deref.call(null,guess_who.core.app_state),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"board","board",-1907017633),j,i], null)) === (0)))?"rgba(100,200,10,0.0":"black"),new cljs.core.Keyword(null,"x","x",2099068185),i,new cljs.core.Keyword(null,"y","y",-1757859776),j,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (i__19866,s__19863__$1,j,c__4521__auto__,size__4522__auto__,b__19867,s__19865__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__){
-return (function guess_who$core$grid_html_$_iter__19862_$_iter__19864_$_box_click(e){
+if((i__16158 < size__4522__auto__)){
+var j = cljs.core._nth.call(null,c__4521__auto__,i__16158);
+cljs.core.chunk_append.call(null,b__16159,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"rect","rect",-108902628),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"width","width",-384071477),.66,new cljs.core.Keyword(null,"height","height",1025178622),.89,new cljs.core.Keyword(null,"fill","fill",883462889),(((cljs.core.get_in.call(null,cljs.core.deref.call(null,guess_who.core.app_state),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"board","board",-1907017633),j,i], null)) === (0)))?"rgba(100,200,10,0.0":"white"),new cljs.core.Keyword(null,"x","x",2099068185),i,new cljs.core.Keyword(null,"y","y",-1757859776),j,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (i__16158,s__16155__$1,j,c__4521__auto__,size__4522__auto__,b__16159,s__16157__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__){
+return (function guess_who$core$grid_html_$_iter__16154_$_iter__16156_$_box_click(e){
 cljs.core.prn.call(null,new cljs.core.Keyword(null,"board","board",-1907017633),j,i);
 
 return cljs.core.swap_BANG_.call(null,guess_who.core.app_state,cljs.core.assoc_in,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"board","board",-1907017633),j,i], null));
-});})(i__19866,s__19863__$1,j,c__4521__auto__,size__4522__auto__,b__19867,s__19865__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__))
+});})(i__16158,s__16155__$1,j,c__4521__auto__,size__4522__auto__,b__16159,s__16157__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__))
 ], null)], null));
 
-var G__19868 = (i__19866 + (1));
-i__19866 = G__19868;
+var G__16160 = (i__16158 + (1));
+i__16158 = G__16160;
 continue;
 } else {
 return true;
@@ -95,35 +95,35 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__19867),guess_who$core$grid_html_$_iter__19862_$_iter__19864.call(null,cljs.core.chunk_rest.call(null,s__19865__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__16159),guess_who$core$grid_html_$_iter__16154_$_iter__16156.call(null,cljs.core.chunk_rest.call(null,s__16157__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__19867),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__16159),null);
 }
 } else {
-var j = cljs.core.first.call(null,s__19865__$2);
-return cljs.core.cons.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"rect","rect",-108902628),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"width","width",-384071477),.66,new cljs.core.Keyword(null,"height","height",1025178622),.89,new cljs.core.Keyword(null,"fill","fill",883462889),(((cljs.core.get_in.call(null,cljs.core.deref.call(null,guess_who.core.app_state),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"board","board",-1907017633),j,i], null)) === (0)))?"rgba(100,200,10,0.0":"black"),new cljs.core.Keyword(null,"x","x",2099068185),i,new cljs.core.Keyword(null,"y","y",-1757859776),j,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (s__19863__$1,j,s__19865__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__){
-return (function guess_who$core$grid_html_$_iter__19862_$_iter__19864_$_box_click(e){
+var j = cljs.core.first.call(null,s__16157__$2);
+return cljs.core.cons.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"rect","rect",-108902628),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"width","width",-384071477),.66,new cljs.core.Keyword(null,"height","height",1025178622),.89,new cljs.core.Keyword(null,"fill","fill",883462889),(((cljs.core.get_in.call(null,cljs.core.deref.call(null,guess_who.core.app_state),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"board","board",-1907017633),j,i], null)) === (0)))?"rgba(100,200,10,0.0":"white"),new cljs.core.Keyword(null,"x","x",2099068185),i,new cljs.core.Keyword(null,"y","y",-1757859776),j,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (s__16155__$1,j,s__16157__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__){
+return (function guess_who$core$grid_html_$_iter__16154_$_iter__16156_$_box_click(e){
 cljs.core.prn.call(null,new cljs.core.Keyword(null,"board","board",-1907017633),j,i);
 
 return cljs.core.swap_BANG_.call(null,guess_who.core.app_state,cljs.core.assoc_in,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"board","board",-1907017633),j,i], null));
-});})(s__19863__$1,j,s__19865__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__))
-], null)], null),guess_who$core$grid_html_$_iter__19862_$_iter__19864.call(null,cljs.core.rest.call(null,s__19865__$2)));
+});})(s__16155__$1,j,s__16157__$2,temp__5457__auto____$1,i,xs__6012__auto__,temp__5457__auto__))
+], null)], null),guess_who$core$grid_html_$_iter__16154_$_iter__16156.call(null,cljs.core.rest.call(null,s__16157__$2)));
 }
 } else {
 return null;
 }
 break;
 }
-});})(s__19863__$1,i,xs__6012__auto__,temp__5457__auto__))
+});})(s__16155__$1,i,xs__6012__auto__,temp__5457__auto__))
 ,null,null));
-});})(s__19863__$1,i,xs__6012__auto__,temp__5457__auto__))
+});})(s__16155__$1,i,xs__6012__auto__,temp__5457__auto__))
 ;
 var fs__4520__auto__ = cljs.core.seq.call(null,iterys__4519__auto__.call(null,cljs.core.range.call(null,cljs.core.count.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,guess_who.core.app_state))))));
 if(fs__4520__auto__){
-return cljs.core.concat.call(null,fs__4520__auto__,guess_who$core$grid_html_$_iter__19862.call(null,cljs.core.rest.call(null,s__19863__$1)));
+return cljs.core.concat.call(null,fs__4520__auto__,guess_who$core$grid_html_$_iter__16154.call(null,cljs.core.rest.call(null,s__16155__$1)));
 } else {
-var G__19869 = cljs.core.rest.call(null,s__19863__$1);
-s__19863__$1 = G__19869;
+var G__16161 = cljs.core.rest.call(null,s__16155__$1);
+s__16155__$1 = G__16161;
 continue;
 }
 } else {
@@ -136,8 +136,13 @@ break;
 return iter__4523__auto__.call(null,cljs.core.range.call(null,cljs.core.count.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,guess_who.core.app_state)))));
 })()], null));
 });
+guess_who.core.reset_button = (function guess_who$core$reset_button(){
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"type","type",1174270348),"button",new cljs.core.Keyword(null,"value","value",305978217),"Reset",new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
+return location.reload(cljs.core.List.EMPTY);
+})], null)], null)], null);
+});
 guess_who.core.guess_who = (function guess_who$core$guess_who(){
-return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"center","center",-748944368),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h1","h1",-1896887462),new cljs.core.Keyword(null,"text","text",-1790561697).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,guess_who.core.app_state))], null),guess_who.core.chat_input.call(null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),new cljs.core.Keyword(null,"answer","answer",-742633163).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,guess_who.core.output_state))], null),guess_who.core.grid_html.call(null)], null);
+return new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"center","center",-748944368),guess_who.core.reset_button.call(null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h1","h1",-1896887462),new cljs.core.Keyword(null,"text","text",-1790561697).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,guess_who.core.app_state))], null),guess_who.core.chat_input.call(null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),new cljs.core.Keyword(null,"answer","answer",-742633163).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,guess_who.core.output_state))], null),guess_who.core.grid_html.call(null)], null);
 });
 guess_who.core.get_app_element = (function guess_who$core$get_app_element(){
 return goog.dom.getElement("app");

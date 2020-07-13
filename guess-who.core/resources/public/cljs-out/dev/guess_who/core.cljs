@@ -82,7 +82,7 @@
                :height .89
                :fill (if (zero? (get-in @app-state [:board j i]))
                        "rgba(100,200,10,0.0"
-                       "black")
+                       "white")
                :x i
                :y j
                :on-click
@@ -91,9 +91,15 @@
                  (swap! app-state assoc-in [:board j i]))}])])
   )
 
+(defn reset-button []
+  [:div
+   [:input {:type "button" :value "Reset"
+            :on-click #(js/location.reload())}]])
+
 ;This is the core method that is building our grid
 (defn guess-who []
   [:center
+   (reset-button)
    [:h1 (:text @app-state)]
    (chat-input)
    [:h3 (:answer @output-state)]
@@ -103,8 +109,8 @@
 
 
 (defn get-app-element []
-  (gdom/getElement "app"))
-
+  (gdom/getElement "app")
+  )
 
 (defn mount [el]
   (reagent/render-component [guess-who] el))

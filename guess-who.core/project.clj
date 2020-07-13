@@ -8,7 +8,11 @@
 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.520"]
-                 [reagent "0.8.1"]]
+                 [reagent "0.8.1"]
+                 [compojure "1.6.1"]
+                 [hiccup "1.0.5"]
+                 [com.novemberain/monger "3.1.0"]
+                 ]
 
   :source-paths ["src"]
 
