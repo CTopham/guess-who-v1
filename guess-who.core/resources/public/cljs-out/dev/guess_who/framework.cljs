@@ -1,26 +1,30 @@
 (ns guess-who.framework
   (:require
     [clojure.string :as string :refer [split join]]
-    ))
+    [guess-who.middleware :as mw]
+   ))
 
 ;The frameworks job is to take the user input which has already been translated into readable
 ;language figure out what the user is really asking in the decode method, decode will return an attribute,
 ;we use that attribute and pass it into the interpreter to see if its true or not. The interpreter will send
 ;back a unique ID. We then plug that unique ID into the dynamic answer and send that out to the UI
 
+;this is our get ajax call to grab data from our composer/:composer which is fed by mongo
+
+
 ;this returns the attribute from the key code map
 (defn decoder [s]
   (let [
-        brahms (string/includes? s "brahms")
-        bach (string/includes? s "bach")
-        beethoven (string/includes? s "beethoven")
-        chopin (string/includes? s "chopin")
-        debussy (string/includes? s "debussy")
-        mozart (string/includes? s "mozart")
-        liszt (string/includes? s "liszt")
-        mendelssohn (string/includes? s "mendelssohn")
+        brahms (and (false? (string/includes? s "what"))(string/includes? s "brahms"))
+        bach (and (false? (string/includes? s "what"))(string/includes? s "bach"))
+        beethoven (and (false? (string/includes? s "what"))(string/includes? s "beethoven"))
+        chopin (and (false? (string/includes? s "what"))(string/includes? s "chopin"))
+        debussy (and (false? (string/includes? s "what"))(string/includes? s "debussy"))
+        mozart (and (false? (string/includes? s "what"))(string/includes? s "mozart"))
+        liszt (and (false? (string/includes? s "what"))(string/includes? s "liszt"))
+        mendelssohn (and (false? (string/includes? s "what"))(string/includes? s "mendelssohn"))
 
-        era (or (string/includes? s "era") (string/includes? s "period"))
+        era (and (false? (string/includes? s "what"))(or (string/includes? s "era") (string/includes? s "period")))
         born (or (string/includes? s "born") (string/includes? s "birth"))
         died (or (string/includes? s "died") (string/includes? s "die"))
         region (or (string/includes? s "from") (string/includes? s "region"))
@@ -30,6 +34,7 @@
         beard (string/includes? s "beard")
         magnum-opus (or (string/includes? s "compose") (string/includes? s "write"))
         hint (string/includes? s "hint")
+        info (or (string/includes? s "what")(string/includes? s "whats"))
         ]
     (cond
       (= brahms true) {:attribute "brahms" :full-input s}
@@ -51,6 +56,7 @@
       (= beard true) {:attribute "beard" :full-input s}
       (= magnum-opus true) {:attribute "magnum-opus" :full-input s}
       (= hint true) {:attribute "hint" :full-input s}
+      (= info true) {:attribute "info" :full-input s}
       :else {:attribute "unknown" :full-input s})
     )
   )
@@ -184,6 +190,21 @@
     )
   )
 
+;The user input has been identified wants some info, look for the possible answers and assoc it to the map
+(defmethod interpret "info" [m]
+ (cond
+  (and (string/includes? (get m :full-input) "brahms") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "brahms" :k "attributes"})
+  (and (string/includes? (get m :full-input) "bach") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "bach" :k "attributes"})
+  (and (string/includes? (get m :full-input) "beethoven") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "beethoven" :k "attributes"})
+  (and (string/includes? (get m :full-input) "chopin") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "chopin" :k "attributes"})
+  (and (string/includes? (get m :full-input) "debussy") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "debussy" :k "attributes"})
+  (and (string/includes? (get m :full-input) "mendelssohn") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "mendelssohn" :k "attributes"})
+  (and (string/includes? (get m :full-input) "liszt") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "liszt" :k "attributes"})
+  (and (string/includes? (get m :full-input) "mozart") (string/includes? (get m :full-input) "attributes")) (assoc m :query {:comp "mozart" :k "attributes"})
+  :else (assoc m :unknown "unknown command")
+  )
+  )
+
 
 ;----------------------------------these solve the riddle----------------------------------
 
@@ -287,6 +308,8 @@
       (contains? m :solve) (if (#(= (get m :solve) %) (get targ :name))
                              (#(str "Yes! the persons is " %1) (get targ :name))
                              (#(str "No, the persons is NOT " %1) (get m :solve)))
+
+      (contains? m :query) (#(mw/get-comp-hc %1) (get-in m [:query :comp]) (get-in m [:query :k]))
 
       (contains? m :unknown) (str "Unknown command")
       )

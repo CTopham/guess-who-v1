@@ -8,10 +8,16 @@
 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.520"]
+                 [org.clojure/core.async "1.3.610"]
                  [reagent "0.8.1"]
                  [compojure "1.6.1"]
                  [hiccup "1.0.5"]
                  [com.novemberain/monger "3.1.0"]
+                 [metosin/reitit "0.5.4"]
+                 [clj-http "3.10.1"]
+                 [cljs-ajax "0.7.5"]
+                 [integrant "0.8.0"]
+                 [hiccup-bootstrap "0.1.2"]
                  ]
 
   :source-paths ["src"]

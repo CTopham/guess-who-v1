@@ -6,6 +6,7 @@
     [guess-who.person-generator :as pg]
     [guess-who.keycoder :as kc]
     [guess-who.framework :as fw]
+    [guess-who.navb :as nb]
     ))
 
 (defn new-board [n]
@@ -59,7 +60,7 @@
 ;We collect all the keycodes the user is pressing and put them into a vector
 ;then when the user hits enter we call our handle input method
 (defn chat-input []
-  [:input {:type :textarea
+  [:input#textbox {:type :textarea
            :value (kc/get-word (get-in @input-state [:word-array])) ;we could use this to erase input when we hit enter, but no backspace is in keycode
            :on-key-press (fn [e]
                            (swap! input-state update-in [:word-array] conj (.-charCode e)) ;append keycode pressed
@@ -68,6 +69,8 @@
                              (handle-input)                 ;clears our word array
                              ))}]
   )
+
+
 
 (defn grid-html []
   (into
@@ -91,18 +94,28 @@
                  (swap! app-state assoc-in [:board j i]))}])])
   )
 
+
+
 (defn reset-button []
   [:div
-   [:input {:type "button" :value "Reset"
+   [:input#button {:type "button" :value "Reset"
             :on-click #(js/location.reload())}]])
+
+
+(defn navb []
+  [:nav.navbar.navbar-light.bg-light
+   [:h1#title (:text @app-state)]
+   [:div#main-content(chat-input)]
+ (reset-button)
+   ]
+  )
 
 ;This is the core method that is building our grid
 (defn guess-who []
   [:center
-   (reset-button)
-   [:h1 (:text @app-state)]
-   (chat-input)
+   (navb)
    [:h3 (:answer @output-state)]
+   [:p "hint"]
    (grid-html)
    ]
   )
@@ -126,7 +139,7 @@
 ;; specify reload hook with ^;after-load metadata
 (defn ^:after-load on-reload []
   (mount-app-element)
-  ;; optionally touch your app-state to force rerendering depending on
+  ;; optionally touch your app-state to force re-rendering depending on
   ;; your application
   ;; (swap! app-state update-in [:__figwheel_counter] inc)
 )

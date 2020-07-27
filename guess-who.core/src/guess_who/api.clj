@@ -2,31 +2,67 @@
   (:require
     [monger.core :as mg]
     [monger.collection :as mc]
+    [clojure.data.json :as json]
+    [clj-http.client :as client]
     )
   )
 
+;Server side API
 
 ;connect and insert our data
 (let [conn (mg/connect)
       db (mg/get-db conn "monger-test")
       coll "documents"]
-  (mc/insert db coll {:composer "beethoven" :era "classical"})
-  (mc/insert db coll {:composer "liszt" :era "romantic"})
+  (mc/insert db coll {:name "beethoven" :era "classical" :born "18th century (1770)" :died "19th century (1827)"
+                      :region "germany" :instrument "piano and violin" :hair-type "long"
+                      :hair-color "gray" :gender "male" :height "5'4" :beard false :magnum-opus "9th symphony"
+                      })
+  (mc/insert db coll {:name "bach" :era "baroque" :born "17th century (1685)" :died "18th century (1750)"
+                      :region "germany" :instrument "violin" :hair-type "curly"
+                      :hair-color "gray" :gender "male" :height "5'11" :beard false :magnum-opus "mass in b minor"
+                      })
+  (mc/insert db coll {:name "brahms" :era "romantic" :born "19th century" :died "19th century"
+                      :region "germany" :instrument "violin" :instrument2 "flute" :hair-type "straight"
+                      :hair-color "gray" :gender "male" :height "5'10" :beard true :magnum-opus "symphony 4"
+                      :hint "Schumann was so impressed with this gentleman, praising the young composer’s genius and heralding him as the one who could overthrow the New German School of Liszt and Wagner."
+                      })
   )
 
-;our query: takes composer and key
-(defmacro find-composer [comp k]
+;-----server side api------
+
+;helper: our query: takes composer and key
+(defn find-composer [comp]
   (let [conn (mg/connect)
         db (mg/get-db conn "monger-test")
         coll "documents"
-        grab (mc/find-one-as-map db coll {:composer comp})
-        key (keyword k)
-        result (get grab key)
+        grab (mc/find-one-as-map db coll {:name comp})
+        result (dissoc grab :_id)
         ]
-    (println comp "created music in the" result "era")
     result
     ))
-(find-composer "beethoven" "era")
+
+;were calling this from server, populates our /composer/:composer path with mongo data in son format, populates upon navigating to endpoint
+(defn composer-api [comp]
+  (json/write-str (find-composer comp)))
+
+
+
+;==========
+;========== Below is Not in Use =====================
+;==========
+;------- client side api -----
+
+; http get call for "requests"
+(defn get-comp [c k]
+  (let [result-map (client/get (str "http://localhost:8080/composer/"c))
+        result-body (get result-map :body)
+        result-map (json/read-str result-body)
+        ]
+    (get result-map k)
+    )
+  )
+
+;(get-comp "beethoven" "hair-type")
 
 ;------------------ adding to framework
 ;info (string/includes? s "what")
@@ -40,5 +76,4 @@
 ;  )
 ; )
 
-;(contains? m :query)
-;(#(str "info test! " %1 " " %2) (get-in m [:query :comp]) (get-in m [:query :k]))
+;(contains? m :query) (#(str "info test! " %1 " " %2) (get-in m [:query :comp]) (get-in m [:query :k]))

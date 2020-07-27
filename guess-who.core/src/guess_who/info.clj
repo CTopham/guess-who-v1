@@ -1,11 +1,13 @@
 (ns guess-who.info
   (:require
-    [guess-who.info :as information]
     [compojure.core :refer [defroutes GET]]
     [compojure.route :as route]
     [hiccup.page :refer [html5 include-js include-css]]
     [clojure.string :as string :refer [split join]]
     [hiccup.core]
+    [monger.core :as mg]
+    [monger.collection :as mc]
+    [clojure.data.json :as json]
     ))
 
 ;Input state store our word arrays, anything we type into the text box get placed into the vector
@@ -56,18 +58,3 @@
       ]
      (include-js "/cljs-out/dev-main.js")]))
 
-(defn beethoven []
-  (html5
-    [:head
-     [:meta {:charset "UTF-8"}]
-     [:meta {:name "viewport"
-             :content "width=device-width, initial-scale=1"}]
-     ]
-    [:body
-     [:div {:id "info"}]
-     [:center
-      [:h1 "Beethoven"]
-      (chat-input)
-      [:h3 (:answer @output-state)]
-      ]
-     (include-js "/cljs-out/dev-main.js")]))

@@ -2,16 +2,17 @@
 goog.provide('guess_who.framework');
 goog.require('cljs.core');
 goog.require('clojure.string');
+goog.require('guess_who.middleware');
 guess_who.framework.decoder = (function guess_who$framework$decoder(s){
-var brahms = clojure.string.includes_QMARK_.call(null,s,"brahms");
-var bach = clojure.string.includes_QMARK_.call(null,s,"bach");
-var beethoven = clojure.string.includes_QMARK_.call(null,s,"beethoven");
-var chopin = clojure.string.includes_QMARK_.call(null,s,"chopin");
-var debussy = clojure.string.includes_QMARK_.call(null,s,"debussy");
-var mozart = clojure.string.includes_QMARK_.call(null,s,"mozart");
-var liszt = clojure.string.includes_QMARK_.call(null,s,"liszt");
-var mendelssohn = clojure.string.includes_QMARK_.call(null,s,"mendelssohn");
-var era = ((clojure.string.includes_QMARK_.call(null,s,"era")) || (clojure.string.includes_QMARK_.call(null,s,"period")));
+var brahms = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"brahms")));
+var bach = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"bach")));
+var beethoven = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"beethoven")));
+var chopin = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"chopin")));
+var debussy = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"debussy")));
+var mozart = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"mozart")));
+var liszt = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"liszt")));
+var mendelssohn = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (clojure.string.includes_QMARK_.call(null,s,"mendelssohn")));
+var era = ((clojure.string.includes_QMARK_.call(null,s,"what") === false) && (((clojure.string.includes_QMARK_.call(null,s,"era")) || (clojure.string.includes_QMARK_.call(null,s,"period")))));
 var born = ((clojure.string.includes_QMARK_.call(null,s,"born")) || (clojure.string.includes_QMARK_.call(null,s,"birth")));
 var died = ((clojure.string.includes_QMARK_.call(null,s,"died")) || (clojure.string.includes_QMARK_.call(null,s,"die")));
 var region = ((clojure.string.includes_QMARK_.call(null,s,"from")) || (clojure.string.includes_QMARK_.call(null,s,"region")));
@@ -21,6 +22,7 @@ var height = ((clojure.string.includes_QMARK_.call(null,s,"height")) || (clojure
 var beard = clojure.string.includes_QMARK_.call(null,s,"beard");
 var magnum_opus = ((clojure.string.includes_QMARK_.call(null,s,"compose")) || (clojure.string.includes_QMARK_.call(null,s,"write")));
 var hint = clojure.string.includes_QMARK_.call(null,s,"hint");
+var info = ((clojure.string.includes_QMARK_.call(null,s,"what")) || (clojure.string.includes_QMARK_.call(null,s,"whats")));
 if(cljs.core._EQ_.call(null,brahms,true)){
 return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"attribute","attribute",-2074029119),"brahms",new cljs.core.Keyword(null,"full-input","full-input",1051896429),s], null);
 } else {
@@ -75,8 +77,12 @@ return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"at
 if(cljs.core._EQ_.call(null,hint,true)){
 return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"attribute","attribute",-2074029119),"hint",new cljs.core.Keyword(null,"full-input","full-input",1051896429),s], null);
 } else {
+if(cljs.core._EQ_.call(null,info,true)){
+return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"attribute","attribute",-2074029119),"info",new cljs.core.Keyword(null,"full-input","full-input",1051896429),s], null);
+} else {
 return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"attribute","attribute",-2074029119),"unknown",new cljs.core.Keyword(null,"full-input","full-input",1051896429),s], null);
 
+}
 }
 }
 }
@@ -408,6 +414,42 @@ return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"hint","hint",4396
 return null;
 }
 }));
+cljs.core._add_method.call(null,guess_who.framework.interpret,"info",(function (m){
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"brahms")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"brahms",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"bach")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"bach",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"beethoven")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"beethoven",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"chopin")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"chopin",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"debussy")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"debussy",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"mendelssohn")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"mendelssohn",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"liszt")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"liszt",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+if(((clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"mozart")) && (clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"attributes")))){
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"comp","comp",1191953630),"mozart",new cljs.core.Keyword(null,"k","k",-2146297393),"attributes"], null));
+} else {
+return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"unknown","unknown",-935977881),"unknown command");
+
+}
+}
+}
+}
+}
+}
+}
+}
+}));
 cljs.core._add_method.call(null,guess_who.framework.interpret,"brahms",(function (m){
 if(clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),"brahms")){
 return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"solve","solve",-1004278675),"brahms");
@@ -469,117 +511,117 @@ return cljs.core.assoc.call(null,m,new cljs.core.Keyword(null,"unknown","unknown
 }));
 guess_who.framework.Dynamic_Answers = (function guess_who$framework$Dynamic_Answers(m,targ){
 if(clojure.string.includes_QMARK_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"full-input","full-input",1051896429)),cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"name","name",1843675177)))){
-return (function (p1__16119_SHARP_){
-return ["Yes! You guessed it! the person is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16119_SHARP_)].join('');
+return (function (p1__26000_SHARP_){
+return ["Yes! You guessed it! the person is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26000_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"name","name",1843675177)));
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"hair-type","hair-type",805324640))){
-if((function (p1__16120_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"hair-type","hair-type",805324640)),p1__16120_SHARP_);
+if((function (p1__26001_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"hair-type","hair-type",805324640)),p1__26001_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"hair-type","hair-type",805324640)))){
-return (function (p1__16121_SHARP_){
-return ["Yes! the persons hair is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16121_SHARP_)].join('');
+return (function (p1__26002_SHARP_){
+return ["Yes! the persons hair is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26002_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"hair-type","hair-type",805324640)));
 } else {
-return (function (p1__16122_SHARP_){
-return ["No, the persons hair is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16122_SHARP_)].join('');
+return (function (p1__26003_SHARP_){
+return ["No, the persons hair is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26003_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"hair-type","hair-type",805324640)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"height","height",1025178622))){
-if((function (p1__16123_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"height","height",1025178622)),p1__16123_SHARP_);
+if((function (p1__26004_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"height","height",1025178622)),p1__26004_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"height","height",1025178622)))){
-return (function (p1__16124_SHARP_){
-return ["Yes! the persons is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16124_SHARP_)," feet tall"].join('');
+return (function (p1__26005_SHARP_){
+return ["Yes! the persons is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26005_SHARP_)," feet tall"].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"height","height",1025178622)));
 } else {
-return (function (p1__16125_SHARP_){
-return ["No, the persons is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16125_SHARP_)," feet tall"].join('');
+return (function (p1__26006_SHARP_){
+return ["No, the persons is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26006_SHARP_)," feet tall"].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"height","height",1025178622)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"hair-color","hair-color",330394323))){
-if((function (p1__16126_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"hair-color","hair-color",330394323)),p1__16126_SHARP_);
+if((function (p1__26007_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"hair-color","hair-color",330394323)),p1__26007_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"hair-color","hair-color",330394323)))){
-return (function (p1__16127_SHARP_){
-return ["Yes! the persons hair is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16127_SHARP_)].join('');
+return (function (p1__26008_SHARP_){
+return ["Yes! the persons hair is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26008_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"hair-color","hair-color",330394323)));
 } else {
-return (function (p1__16128_SHARP_){
-return ["No, the persons hair is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16128_SHARP_)].join('');
+return (function (p1__26009_SHARP_){
+return ["No, the persons hair is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26009_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"hair-color","hair-color",330394323)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"region","region",270415120))){
-if((function (p1__16129_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"region","region",270415120)),p1__16129_SHARP_);
+if((function (p1__26010_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"region","region",270415120)),p1__26010_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"region","region",270415120)))){
-return (function (p1__16130_SHARP_){
-return ["Yes! the persons is from ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16130_SHARP_)].join('');
+return (function (p1__26011_SHARP_){
+return ["Yes! the persons is from ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26011_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"region","region",270415120)));
 } else {
-return (function (p1__16131_SHARP_){
-return ["No, the persons is NOT from ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16131_SHARP_)].join('');
+return (function (p1__26012_SHARP_){
+return ["No, the persons is NOT from ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26012_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"region","region",270415120)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"era","era",1165135812))){
-if((function (p1__16132_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"era","era",1165135812)),p1__16132_SHARP_);
+if((function (p1__26013_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"era","era",1165135812)),p1__26013_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"era","era",1165135812)))){
-return (function (p1__16133_SHARP_){
-return ["Yes! the persons composed in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16133_SHARP_)," period"].join('');
+return (function (p1__26014_SHARP_){
+return ["Yes! the persons composed in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26014_SHARP_)," period"].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"era","era",1165135812)));
 } else {
-return (function (p1__16134_SHARP_){
-return ["No, the persons is did not compose in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16134_SHARP_)," period"].join('');
+return (function (p1__26015_SHARP_){
+return ["No, the persons is did not compose in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26015_SHARP_)," period"].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"era","era",1165135812)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"born","born",-461260488))){
-if((function (p1__16135_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"born","born",-461260488)),p1__16135_SHARP_);
+if((function (p1__26016_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"born","born",-461260488)),p1__26016_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"born","born",-461260488)))){
-return (function (p1__16136_SHARP_){
-return ["Yes! the persons was born in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16136_SHARP_)].join('');
+return (function (p1__26017_SHARP_){
+return ["Yes! the persons was born in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26017_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"born","born",-461260488)));
 } else {
-return (function (p1__16137_SHARP_){
-return ["No, the persons is was not born in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16137_SHARP_)].join('');
+return (function (p1__26018_SHARP_){
+return ["No, the persons is was not born in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26018_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"born","born",-461260488)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"died","died",1083960752))){
-if((function (p1__16138_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"died","died",1083960752)),p1__16138_SHARP_);
+if((function (p1__26019_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"died","died",1083960752)),p1__26019_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"died","died",1083960752)))){
-return (function (p1__16139_SHARP_){
-return ["Yes! the persons died in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16139_SHARP_)].join('');
+return (function (p1__26020_SHARP_){
+return ["Yes! the persons died in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26020_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"died","died",1083960752)));
 } else {
-return (function (p1__16140_SHARP_){
-return ["No, the persons did not die in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16140_SHARP_)].join('');
+return (function (p1__26021_SHARP_){
+return ["No, the persons did not die in the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26021_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"died","died",1083960752)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"instrument","instrument",-960698844))){
-if((function (p1__16141_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"instrument","instrument",-960698844)),p1__16141_SHARP_);
+if((function (p1__26022_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"instrument","instrument",-960698844)),p1__26022_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"instrument","instrument",-960698844)))){
-return (function (p1__16142_SHARP_){
-return ["Yes! the persons plays the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16142_SHARP_)].join('');
+return (function (p1__26023_SHARP_){
+return ["Yes! the persons plays the ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26023_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"instrument","instrument",-960698844)));
 } else {
-return (function (p1__16143_SHARP_){
-return ["No, the persons does not play ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16143_SHARP_)].join('');
+return (function (p1__26024_SHARP_){
+return ["No, the persons does not play ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26024_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"instrument","instrument",-960698844)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"beard","beard",636633992))){
-if((function (p1__16144_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"beard","beard",636633992)),p1__16144_SHARP_);
+if((function (p1__26025_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"beard","beard",636633992)),p1__26025_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"beard","beard",636633992)))){
 return "Yes! the persons has a beard ";
 } else {
@@ -587,40 +629,46 @@ return "No, the persons does NOT have a beard";
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"magnum-opus","magnum-opus",437282641))){
-if((function (p1__16145_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"magnum-opus","magnum-opus",437282641)),p1__16145_SHARP_);
+if((function (p1__26026_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"magnum-opus","magnum-opus",437282641)),p1__26026_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"magnum-opus","magnum-opus",437282641)))){
-return (function (p1__16146_SHARP_){
-return ["Yes! ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16146_SHARP_)," is one of this composers most prolific pieces"].join('');
+return (function (p1__26027_SHARP_){
+return ["Yes! ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26027_SHARP_)," is one of this composers most prolific pieces"].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"magnum-opus","magnum-opus",437282641)));
 } else {
-return (function (p1__16147_SHARP_){
-return ["No, try ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16147_SHARP_)," for another composer"].join('');
+return (function (p1__26028_SHARP_){
+return ["No, try ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26028_SHARP_)," for another composer"].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"magnum-opus","magnum-opus",437282641)));
 }
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"hint","hint",439639918))){
-return (function (p1__16148_SHARP_){
-return cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16148_SHARP_);
+return (function (p1__26029_SHARP_){
+return cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26029_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"hint","hint",439639918)));
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"solve","solve",-1004278675))){
-if((function (p1__16149_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"solve","solve",-1004278675)),p1__16149_SHARP_);
+if((function (p1__26030_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"solve","solve",-1004278675)),p1__26030_SHARP_);
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"name","name",1843675177)))){
-return (function (p1__16150_SHARP_){
-return ["Yes! the persons is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16150_SHARP_)].join('');
+return (function (p1__26031_SHARP_){
+return ["Yes! the persons is ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26031_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,targ,new cljs.core.Keyword(null,"name","name",1843675177)));
 } else {
-return (function (p1__16151_SHARP_){
-return ["No, the persons is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__16151_SHARP_)].join('');
+return (function (p1__26032_SHARP_){
+return ["No, the persons is NOT ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__26032_SHARP_)].join('');
 }).call(null,cljs.core.get.call(null,m,new cljs.core.Keyword(null,"solve","solve",-1004278675)));
 }
+} else {
+if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"query","query",-1288509510))){
+return (function (p1__26033_SHARP_){
+return guess_who.middleware.get_comp_hc.call(null,p1__26033_SHARP_);
+}).call(null,cljs.core.get_in.call(null,m,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.Keyword(null,"comp","comp",1191953630)], null)),cljs.core.get_in.call(null,m,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"query","query",-1288509510),new cljs.core.Keyword(null,"k","k",-2146297393)], null)));
 } else {
 if(cljs.core.contains_QMARK_.call(null,m,new cljs.core.Keyword(null,"unknown","unknown",-935977881))){
 return "Unknown command";
 } else {
 return null;
+}
 }
 }
 }

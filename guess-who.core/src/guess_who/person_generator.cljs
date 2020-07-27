@@ -46,6 +46,20 @@
    }
   )
 
+
+(def comp-checker
+  {
+   :brahms "Era: Romantic | Instrument: Violin | Region: Germany | Hair-type: Straight"
+   :bach "Era: Baroque | Instrument: Violin | Region: Germany | Hair-type: curly"
+   :beethoven "Era: Classical | Instrument: Piano and Violin | Region: Germany | Hair-type: Long"
+   :chopin "Era: Romantic | Instrument: Piano | Region: Poland | Hair-type: Long"
+   :debussy "Era: Romantic | Instrument: Piano | Region: France | Hair-type: Mid length"
+   :mozart "Era: Classical | Instrument: Piano and Violin | Region: Vienna | Hair-type: Long"
+   :liszt "Era: Romantic | Instrument: Piano | Region: Hungary | Hair-type: Long"
+   :mendelssohn "Era: Romantic | Instrument: Organ | Region: Germany | Hair-type: Curly"
+   }
+  )
+
 ;Gets a random person from the map and returns another map with their info
 (defn generate-target []
   (let [target (rand-nth (map conj (keys people)))          ;gets a key from map of people
