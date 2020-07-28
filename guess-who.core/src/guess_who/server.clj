@@ -5,9 +5,6 @@
     [compojure.core :refer [defroutes GET]]
     [compojure.route :as route]
     [hiccup.page :refer [html5 include-js include-css]]
-    [reitit.ring :as ring]
-    [reitit.coercion.spec]
-    [reitit.ring.coercion :as rrc]
     ))
 
 
